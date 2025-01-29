@@ -35,6 +35,7 @@ export default function ZoomMeetingGenerator (){
     // Insert startTime by using day of week
     const isWeekend = (day === "Saturday" || day === "Sunday");
     const startTime = isWeekend ? komaTimes.weekend.get(koma) : komaTimes.weekday.get(koma);
+    console.log(startTime)
     if(!startTime){
       alert ("無効なコマが選択されました")
       return 0;
@@ -48,7 +49,7 @@ export default function ZoomMeetingGenerator (){
         selected_date: date,
         start_time: startTime
       });
-      if(status ==="success"){ 
+      if(status === "success"){ 
         setMessage(message);
       }
       else{
@@ -60,7 +61,89 @@ export default function ZoomMeetingGenerator (){
   };
   return (
     <div className="container mt-5">
-      <h1></h1>
+      <h1>Zoom Meeting Generator</h1>
+
+      <div className="field">
+        <label className="label">生徒名</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            value={studentName}
+            onChange={(e) => setStudentName(e.target.value)}
+            placeholder="生徒名を入力"
+          />
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="label">曜日</label>
+        <div className="control">
+          <div className="select">
+            <select value={day} onChange={(e) => setDay(e.target.value)}>
+              <option value="" disabled selected>選択してください</option>
+              <option value="Monday">月曜日</option>
+              <option value="Tuesday">火曜日</option>
+              <option value="Wednesday">水曜日</option>
+              <option value="Thursday">木曜日</option>
+              <option value="Friday">金曜日</option>
+              <option value="Saturday">土曜日</option>
+              <option value="Sunday">日曜日</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="label">コマ</label>
+        <div className="control">
+          <div className="select">
+            <select value={koma} onChange={(e) => setKoma(parseInt(e.target.value))}>
+              <option value="" disabled selected>選択してください</option>
+              <option value="1">1コマ</option>
+              <option value="2">2コマ</option>
+              <option value="3">3コマ</option>
+              {(day === "Sturday" || day === "Sunday") ? (
+                <>
+                  <option value="4">4コマ</option>
+                  <option value="5">5コマ</option>
+                </>
+                ): null}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">今週または来週</label>
+        <div class="control">
+          <div class="select">
+            <select value={week} onChange={(e)=> setWeek(e.target.value)}>
+              <option value="this">今週</option>
+              <option value="next">来週</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="field">
+        <div className="control">
+          <button className="button is-primary" onClick={handleSubmit}>Generate Zoom Meeting</button>
+        </div> 
+      </div>
+
+      <div className="field">
+        <label className="label">Generated Message</label>
+        <div className="control">
+          <textarea
+          className="textarea"
+          readOnly
+          value={message}
+          onClick={(e) => e.target.select()}
+          style={{ minHeight: '150px' }} // Ensures it has a fixed height for easy readability
+          ></textarea>
+        </div>
+      </div>
     </div>
   );
 };
