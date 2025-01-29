@@ -114,10 +114,10 @@ export default function ZoomMeetingGenerator (){
         </div>
       </div>
 
-      <div class="field">
-        <label class="label">今週または来週</label>
-        <div class="control">
-          <div class="select">
+      <div className="field">
+        <label className="label">今週または来週</label>
+        <div className="control">
+          <div className="select">
             <select value={week} onChange={(e)=> setWeek(e.target.value)}>
               <option value="this">今週</option>
               <option value="next">来週</option>
