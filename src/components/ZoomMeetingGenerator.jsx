@@ -50,7 +50,12 @@ export default function ZoomMeetingGenerator (){
         start_time: startTime
       });
       if(status === "success"){ 
+        // setMessage and init all input
         setMessage(message);
+        setStudentName("");
+        setDay("");
+        setKoma("");
+        setWeek("this");
       }
       else{
         alert("ZOOMミーティングの作成に失敗しました。もう一度試してください。")
@@ -103,7 +108,7 @@ export default function ZoomMeetingGenerator (){
               <option value="1">1コマ</option>
               <option value="2">2コマ</option>
               <option value="3">3コマ</option>
-              {(day === "Sturday" || day === "Sunday") ? (
+              {(day === "Saturday" || day === "Sunday") ? (
                 <>
                   <option value="4">4コマ</option>
                   <option value="5">5コマ</option>
