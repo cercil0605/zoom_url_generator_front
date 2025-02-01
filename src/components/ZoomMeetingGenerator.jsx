@@ -57,9 +57,6 @@ export default function ZoomMeetingGenerator (){
         setKoma("");
         setWeek("this");
       }
-      else{
-        alert("ZOOMミーティングの作成に失敗しました。もう一度試してください。")
-      }
     } catch (error){
       alert("ZOOMミーティング作成中にエラーが発生しました。")
     }
