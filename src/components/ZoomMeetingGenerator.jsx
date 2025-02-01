@@ -58,7 +58,7 @@ export default function ZoomMeetingGenerator (){
         setWeek("this");
       }
     } catch (error){
-      alert("ZOOMミーティング作成中にエラーが発生しました。")
+      console.error("An error ocured")
     }
   };
   return (
