@@ -3,7 +3,7 @@ import "bulma/css/bulma.min.css"
 
 const OAuthScreen = () => {
     const handleOAuthClick = () => {
-        window.location.href = "https://zoomapi.cercil.net/zoom/oauth"
+        window.location.href = "http://localhost:3010/zoom/oauth"
     };
 
     return (
